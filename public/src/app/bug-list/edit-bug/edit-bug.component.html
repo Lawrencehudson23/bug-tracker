@@ -1,5 +1,7 @@
 <h2>Edit a bug report</h2>
-
+<ul>
+  <li class="error" *ngFor="let error of errors">{{ error }}</li>
+</ul>
 <form (submit)="editBug()">
   <div>
     <label>Title</label>

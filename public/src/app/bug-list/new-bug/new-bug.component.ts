@@ -13,15 +13,20 @@ export class NewBugComponent implements OnInit {
     person: '',
     description: '',
   };
+  errors = [];
 
   constructor(private _httpService: HttpService, private _router: Router) {}
 
   ngOnInit(): void {}
 
   createBug() {
+    this.errors = [];
+
     this._httpService.createBug(this.newBug).subscribe((data: any) => {
       if (data.hasOwnProperty('errors')) {
-        //TODO: ERROR
+        for (let key in data.errors) {
+          this.errors.push(data.errors[key].message);
+        }
       } else {
         this._router.navigate(['/']);
       }

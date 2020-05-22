@@ -14,7 +14,7 @@ export class EditBugComponent implements OnInit {
     private _router: Router,
     private _route: ActivatedRoute
   ) {}
-
+  errors = [];
   ngOnInit(): void {
     this._route.params.subscribe((params: Params) => {
       this._httpService
@@ -23,6 +23,8 @@ export class EditBugComponent implements OnInit {
     });
   }
   editBug() {
+    this.errors = [];
+
     this._httpService
       .updateBug(this.bug._id, {
         title: this.bug.title,
@@ -31,7 +33,9 @@ export class EditBugComponent implements OnInit {
       })
       .subscribe((data: any) => {
         if (data.hasOwnProperty('errors')) {
-          //TODO: ERROR
+          for (let key in data.errors) {
+            this.errors.push(data.errors[key].message);
+          }
         } else {
           this._router.navigate(['/home']);
         }
