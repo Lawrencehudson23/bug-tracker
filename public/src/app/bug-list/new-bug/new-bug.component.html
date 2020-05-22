@@ -1,1 +1,17 @@
-<p>new-bug works!</p>
+<h2>Create a new bug report</h2>
+
+<form (submit)="createBug()">
+  <div>
+    <label>Title</label>
+    <input type="text" name="title" [(ngModel)]="newBug.title" />
+  </div>
+  <div>
+    <label>Person</label>
+    <input type="text" name="person" [(ngModel)]="newBug.person" />
+  </div>
+  <div>
+    <label>Description</label>
+    <input type="text" name="description" [(ngModel)]="newBug.description" />
+  </div>
+  <button>Submit</button>
+</form>

@@ -1,1 +1,17 @@
-<p>edit-bug works!</p>
+<h2>Edit a bug report</h2>
+
+<form (submit)="editBug()">
+  <div>
+    <label>Title</label>
+    <input type="text" name="title" [(ngModel)]="bug.title" />
+  </div>
+  <div>
+    <label>Person</label>
+    <input type="text" name="person" [(ngModel)]="bug.person" />
+  </div>
+  <div>
+    <label>Description</label>
+    <input type="text" name="description" [(ngModel)]="bug.description" />
+  </div>
+  <button>Submit</button>
+</form>

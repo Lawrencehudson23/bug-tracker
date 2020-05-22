@@ -7,23 +7,24 @@
       <th>Title</th>
       <th>Person</th>
       <th>Description</th>
-      <th></th>
+      <th>Created Date</th>
       <th>Update Date</th>
       <th>Action</th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let bug of bugs">
-      <td>{{ bug.title }}</td>
+      <td>
+        <a routerLink="/{{ bug._id }}">{{ bug.title }}</a>
+      </td>
       <td>{{ bug.person }}</td>
       <td>{{ bug.description }}</td>
-      <td>{{ bug.created_at | date: "MM/dd/yy hh:mm/ss a" }}</td>
-      <td>{{ bug.updated_at | date: "MM/dd/yy hh:mm/ss a" }}</td>
+      <td>{{ bug.createdAt | date: "M/dd/yyyy hh:mm/ss a" }}</td>
+      <td>{{ bug.updatedAt | date: "M/dd/yyyy hh:mm/ss a" }}</td>
       <td>
-        <button>Edit</button>
-        <button>Delete</button>
+        <button (click)="goToEditTemplate(bug._id)">Edit</button>
+        <button (click)="deleteHandler(bug._id)">Delete</button>
       </td>
     </tr>
   </tbody>
 </table>
-<router-outlet></router-outlet>

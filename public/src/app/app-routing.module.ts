@@ -8,7 +8,7 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: '/',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
   {
@@ -16,15 +16,15 @@ const routes: Routes = [
     component: NewBugComponent,
   },
   {
-    path: '/',
+    path: 'home',
     component: BugListComponent,
   },
   {
-    path: '/:id/edit',
+    path: ':id/edit',
     component: EditBugComponent,
   },
   {
-    path: '/:id',
+    path: ':id',
     component: SingleBugComponent,
   },
 ];
