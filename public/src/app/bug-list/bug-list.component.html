@@ -1,4 +1,4 @@
-<h2>Welcome {{ currentUser.name }}</h2>
+<h2 *ngIf="currentUser">Welcome {{ currentUser.name }}</h2>
 
 <button (click)="logoutUser()">Log Out</button>
 
