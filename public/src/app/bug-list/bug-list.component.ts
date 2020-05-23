@@ -9,22 +9,34 @@ import { Component, OnInit } from '@angular/core';
 })
 export class BugListComponent implements OnInit {
   bugs = [];
+  currentUser = null;
+
   constructor(private _httpService: HttpService, private _router: Router) {}
 
   ngOnInit() {
+    this._httpService.getCurrentUser().subscribe((data: any) => {
+      if (data.user) {
+        this.currentUser = data.user;
+      } else {
+        this._router.navigate(['/login']);
+      }
+    });
+
     this._httpService
       .getAllBugs()
       .subscribe((data: any) => (this.bugs = data.bugs));
   }
   deleteHandler(id) {
-    console.log('delete a bug');
     this._httpService.deleteBug(id).subscribe(() => {
-      this.bugs = this.bugs.filter((bug) => {
-        bug._id !== id;
-      });
+      this.bugs = this.bugs.filter((bug) => bug._id !== id);
     });
   }
   goToEditTemplate(id) {
     this._router.navigate(['/' + id + '/edit']);
+  }
+  logoutUser() {
+    this._httpService.logOutUser().subscribe(() => {
+      this._router.navigate(['/login']);
+    });
   }
 }

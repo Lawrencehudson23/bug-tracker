@@ -10,6 +10,7 @@ import { NewBugComponent } from './bug-list/new-bug/new-bug.component';
 import { EditBugComponent } from './bug-list/edit-bug/edit-bug.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './login/login.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -17,6 +18,7 @@ import { HttpClientModule } from '@angular/common/http';
     SingleBugComponent,
     NewBugComponent,
     EditBugComponent,
+    LoginComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, HttpClientModule, FormsModule],
   providers: [HttpService],

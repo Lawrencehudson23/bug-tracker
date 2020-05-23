@@ -1,0 +1,34 @@
+<h2>Login</h2>
+
+<form (submit)="loginSubmit()">
+  <div>
+    <label>Email</label
+    ><input type="email" name="email" [(ngModel)]="loginUser.email" />
+  </div>
+  <div>
+    <label>Password</label
+    ><input type="password" name="password" [(ngModel)]="loginUser.password" />
+  </div>
+  <button>Submit</button>
+</form>
+<h2>Register</h2>
+registerSubmit
+<form (submit)="registerSubmit()">
+  <div>
+    <label>Name</label
+    ><input type="text" name="name" [(ngModel)]="registerUser.name" />
+  </div>
+  <div>
+    <label>Email</label
+    ><input type="email" name="email" [(ngModel)]="registerUser.email" />
+  </div>
+  <div>
+    <label>Password</label
+    ><input
+      type="password"
+      name="password"
+      [(ngModel)]="registerUser.password"
+    />
+  </div>
+  <button>Submit</button>
+</form>

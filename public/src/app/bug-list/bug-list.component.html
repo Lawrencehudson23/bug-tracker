@@ -1,6 +1,9 @@
+<h2>Welcome {{ currentUser.name }}</h2>
+
+<button (click)="logoutUser()">Log Out</button>
+
 <a routerLink="/new">Add a new bug report</a>
 <h2>Bug List</h2>
-{{ bugs | json }}
 <table>
   <thead>
     <tr>
