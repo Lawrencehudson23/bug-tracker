@@ -1,6 +1,8 @@
 <p *ngIf="!loginUser.email || !registerUser.name"></p>
 <h2>Login</h2>
-
+<ul>
+  <li class="error" *ngFor="let error of errors">{{ error }}</li>
+</ul>
 <form (submit)="loginSubmit()">
   <div>
     <label>Email</label

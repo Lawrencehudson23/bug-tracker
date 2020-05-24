@@ -17,27 +17,32 @@ export class LoginComponent implements OnInit {
     email: '',
     password: '',
   };
-
+  errors = [];
   constructor(private _httpService: HttpService, private _router: Router) {}
 
   ngOnInit(): void {}
 
   loginSubmit() {
+    this.errors = [];
     this._httpService.loginUser(this.loginUser).subscribe((data: any) => {
       if (data.status === 'success') {
         this._router.navigate(['/home']);
       } else {
-        console.log('cant login');
-        //TODO: ERRORS HANDLING
+        for (let key in data.errors) {
+          this.errors.push(data.errors[key].message);
+        }
       }
     });
   }
   registerSubmit() {
+    this.errors = [];
     this._httpService.registerUser(this.registerUser).subscribe((data: any) => {
       if (data.user) {
         this._router.navigate(['/']);
       } else {
-        //TODO: ERRORS HANDLING
+        for (let key in data.errors) {
+          this.errors.push(data.errors[key].message);
+        }
       }
     });
   }
